@@ -3,5 +3,5 @@ pandas
 openpyxl
 PyMuPDF
 requests
-msal
-azure
+fitz
+azure-storage-blob
