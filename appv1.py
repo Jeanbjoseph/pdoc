@@ -58,7 +58,7 @@ if uploaded_file:
     # Carrega todas as abas
     xls = pd.ExcelFile(uploaded_file)
     abas = xls.sheet_names
-    aba_escolhida = st.selectbox("Escolha a aba para analisar:", abas)
+    aba_escolhida = st.selectbox("Escolha a aba para analisar:", abas,index [1])
     # Lê a aba selecionada para DataFrame sem inferir cabeçalho
     df = pd.read_excel(uploaded_file, sheet_name=aba_escolhida, header=None)
 
