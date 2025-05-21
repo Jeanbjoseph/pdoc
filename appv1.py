@@ -128,13 +128,12 @@ if uploaded_file:
     for idx, rec in zip(df_filtrado.index, df_resultado['Recomendações']):
         df_export.at[idx, 'Recomendações'] = rec
 
-    # Gerar novo arquivo Excel com a aba atualizada
-    buffer_full = BytesIO()
-    with pd.ExcelWriter(buffer_full, engine='openpyxl') as writer:
-        df_export.to_excel(writer, sheet_name=aba_escolhida, index=False)
+    # Gerar planilha para download
+    buffer = BytesIO()
+    df_resultado.to_excel(buffer, index=False)
     st.download_button(
-        label="📥 Baixar Resultados",
-        data=buffer_full.getvalue(),
-        file_name="arquivo_atualizado.xlsx",
+        label="📥 Baixar Resultado em Excel",
+        data=buffer.getvalue(),
+        file_name="resultado_recomendacoes_ia.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
